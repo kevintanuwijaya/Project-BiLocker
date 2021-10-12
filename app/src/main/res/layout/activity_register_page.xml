@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_80"
+    tools:context=".activity.LoginPage">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202">
+
+
+        <LinearLayout
+            android:layout_margin="10pt"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="BiLocker"
+                android:textColor="@color/white"
+                android:textSize="20pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:src="@drawable/logo"
+                android:layout_width="25pt"
+                android:layout_height="25pt"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25pt"
+            android:layout_marginBottom="5pt"
+            android:background="@color/gray"
+            android:gravity="center|left">
+
+            <ImageView
+                android:layout_width="15pt"
+                android:layout_height="15pt"
+                android:layout_margin="5pt"
+                android:src="@drawable/account" />
+
+            <EditText
+                android:id="@+id/register_username"
+                style="@style/inputForm"
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:hint="username" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25pt"
+            android:layout_marginBottom="5pt"
+            android:background="@color/gray"
+            android:gravity="center|left">
+
+            <ImageView
+                android:layout_width="15pt"
+                android:layout_height="15pt"
+                android:layout_margin="5pt"
+                android:src="@drawable/open" />
+
+            <EditText
+                android:id="@+id/register_email"
+                style="@style/inputForm"
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:hint="email"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25pt"
+            android:layout_marginBottom="5pt"
+            android:background="@color/gray"
+            android:gravity="center|left">
+
+            <ImageView
+                android:layout_width="15pt"
+                android:layout_height="15pt"
+                android:layout_margin="5pt"
+                android:src="@drawable/key" />
+
+            <EditText
+                android:id="@+id/register_password"
+                style="@style/inputForm"
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:hint="password"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_marginBottom="5pt"
+            android:layout_width="match_parent"
+            android:layout_height="25pt"
+            android:backgroundTint="@color/button_form_color"
+            android:text="Register" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.931"
+        android:gravity="center">
+
+        <TextView
+            android:textColor="@color/white"
+            android:layout_marginRight="2.5pt"
+            android:text="Already Have an Account?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/register_to_login_txt"
+            android:textColor="@color/blue_main"
+            android:layout_marginLeft="2.5pt"
+            android:text="Login here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
