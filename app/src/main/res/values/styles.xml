@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="inputForm" parent="@android:style/Widget.EditText">
+        <item name="android:bottomRightRadius">20px</item>
+        <item name="android:bottomLeftRadius">20px</item>
+        <item name="android:padding">30px</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#40FFFFFF</item>
+        <item name="android:editTextColor">#FFFFFF</item>
+        <item name="android:background">@null</item>
+    </style>
+
+</resources>
