@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="25pt"
             android:layout_marginBottom="5pt"
-            android:background="@color/gray"
+            android:background="@drawable/form_rounded"
             android:gravity="center|left">
 
             <ImageView
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="25pt"
             android:layout_marginBottom="5pt"
-            android:background="@color/gray"
+            android:background="@drawable/form_rounded"
             android:gravity="center|left">
 
             <ImageView
@@ -90,6 +90,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/login_btn"
             android:layout_marginBottom="5pt"
             android:layout_width="match_parent"
             android:layout_height="25pt"
