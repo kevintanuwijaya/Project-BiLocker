@@ -26,115 +26,140 @@
         sothree:umanoOverlay="true"
         android:gravity="top">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="12.5dp"
-                android:layout_marginTop="125dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="110dp"
+                android:paddingBottom="65dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:background="@drawable/form_rounded"
-                    android:gravity="center|left"
-                    android:padding="10dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/login_email"
-                        style="@style/inputForm"
-                        android:layout_width="275dp"
-                        android:layout_height="match_parent"
-                        android:hint="Search"
-                        android:inputType="textEmailAddress"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/main_no_transaction"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="12.5dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/main_rounded_items">
 
-                    <ImageView
-                        android:layout_width="15pt"
-                        android:layout_height="15pt"
-                        android:layout_margin="5pt"
-                        android:src="@drawable/account" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No Transaction"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/main_transaction"
+                        android:layout_width="match_parent"
+                        android:layout_height="175dp"/>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/main_navigation"
-                android:layout_width="match_parent"
-                android:layout_marginTop="12.5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/main_rounded_scan_btn"
-                android:layout_height="150dp">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/qrcode"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.35" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="Store Your Belongings"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.502"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="175dp"
-                android:orientation="horizontal">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/main_no_transaction"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp"
-                    android:layout_marginTop="12.5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="0dp"
-                    android:background="@drawable/main_rounded_items">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No Transaction"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/main_transaction"
+                    android:id="@+id/main_promotion"
                     android:layout_width="match_parent"
-                    android:layout_height="175dp"/>
+                    android:layout_height="100dp"
+                    android:layout_margin="20dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/main_promotion"
+                    android:paddingTop="12.5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="12.5dp"
+                    android:gravity="center">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/main_camera_button"
+                        android:background="@drawable/main_rounded_scan_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:padding="10dp"
+                        android:layout_marginRight="12.5dp">
+
+                        <ImageView
+                            android:id="@+id/main_scan_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/qrcode"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.35" />
+
+                        <TextView
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Store"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.502"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/main_scan_image" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/main_topup_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="12.5dp"
+                        android:padding="10dp"
+                        android:layout_toRightOf="@+id/main_camera_button"
+                        android:background="@drawable/main_rounded_items">
+
+                        <ImageView
+                            android:id="@+id/main_topup_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/money"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.35" />
+
+                        <TextView
+                            android:layout_width="125dp"
+                            android:textAlignment="center"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Top Up"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.502"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/main_topup_image" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
 
             </LinearLayout>
 
-
-
-        </LinearLayout>
+        </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -178,16 +203,16 @@
 
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/main_section_current_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kevin Tanuwijaya"
+                    android:text="Name"
                     android:textColor="@color/white"
                     android:layout_marginTop="5dp"
                     android:textSize="10pt" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/main_section_current_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email"
@@ -196,15 +221,7 @@
                     android:textSize="10pt" />
 
                 <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Password"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="5dp"
-                    android:textSize="10pt" />
-
-                <TextView
+                    android:id="@+id/main_section_current_balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Balance"
@@ -220,7 +237,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
-                android:text="Kevin Tanuwijaya"
+                android:text="Nama"
                 android:textColor="@color/white"
                 android:textSize="12pt"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -233,7 +250,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
-                android:text="Rp. 10000"
+                android:text="Balance"
                 android:textColor="@color/white"
                 android:textSize="8pt"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -267,10 +284,5 @@
             android:layout_height="match_parent"/>
 
     </LinearLayout>
-
-
-
-
-
 
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
