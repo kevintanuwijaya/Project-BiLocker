@@ -18,8 +18,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bilocker.R;
-import com.bilocker.model.User;
-import com.bilocker.utils.CurrentUser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,17 +83,8 @@ public class LoginPage extends AppCompatActivity {
                             passwordTxt.setText("");
                         }else{
                             Toast.makeText(getApplication(),"Login Success",Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(getApplication(),response.toString(),Toast.LENGTH_SHORT).show();
 
                             String[] data = response.split("#");
-
-                            User user = new User();
-                            user.setEmail(data[0]);
-                            user.setPassword(data[1]);
-                            user.setName(data[2]);
-                            user.setMoney(Integer.parseInt(data[3]));
-
-                            CurrentUser.getInstance().setCurrUser(user);
 
                             SharedPreferences preferences = getSharedPreferences("BiLocker",MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
