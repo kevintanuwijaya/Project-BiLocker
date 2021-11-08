@@ -5,10 +5,19 @@ import java.sql.Timestamp;
 
 public class Transaction {
 
+    private int transactionID;
     private Timestamp startTime;
     private Timestamp finishTime;
     private int price;
     private Location location;
+
+    public int getTransactionID() {
+        return transactionID;
+    }
+
+    public void setTransactionID(int transactionID) {
+        this.transactionID = transactionID;
+    }
 
     public Timestamp getStartTime() {
         return startTime;
