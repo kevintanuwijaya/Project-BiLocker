@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/drawable/main_rounded_scan_btn.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_login_page.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_topup.xml" value="0.15942028985507245" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_transaction_detail_page.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_welcome_screen.xml" value="0.178125" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/loading_dialog.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/main_progress_transaction.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/promo_banner.xml" value="0.1539855072463768" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

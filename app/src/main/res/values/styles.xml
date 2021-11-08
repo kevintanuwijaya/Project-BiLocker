@@ -11,4 +11,15 @@
         <item name="android:background">@null</item>
     </style>
 
+    <style name="detialLabel" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">8pt</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="detialText" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">8pt</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>
