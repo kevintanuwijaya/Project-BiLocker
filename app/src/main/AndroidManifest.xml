@@ -16,35 +16,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BiLocker">
         <activity
+            android:name=".activity.AboutUsActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.TopupActivity"
             android:exported="false" />
         <activity
             android:name=".activity.RegisterPage"
-            android:noHistory="true">
-
-        </activity>
+            android:noHistory="true"></activity>
         <activity
             android:name=".activity.TransactionDetailPage"
-            android:noHistory="true">
-
-        </activity>
-        <activity android:name=".activity.LoginPage">
-
-        </activity>
+            android:noHistory="true"></activity>
+        <activity android:name=".activity.LoginPage"></activity>
         <activity
             android:name=".activity.WelcomeScreen"
             android:noHistory="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"></activity>
 
-        </activity>
         <meta-data
             android:name="com.google.android.geo.AIzaSyAplsuBuiercaPgXY3T8ye8DZGfk1QEEVg"
             android:value="@string/google_maps_key" />

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
     private SlidingUpPanelLayout profileSlider;
     private ImageView logout;
     private LinearLayout historyPanel;
-    private ConstraintLayout noTransactionPanel,scanBtn,topupBtn;
+    private ConstraintLayout noTransactionPanel, scanBtn, topupBtn, aboutUsBtn;
     private User currentUser;
     private RequestQueue requestQueue;
 
@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
         noTransactionPanel = findViewById(R.id.main_no_transaction);
         scanBtn = findViewById(R.id.main_camera_button);
         topupBtn = findViewById(R.id.main_topup_button);
+        aboutUsBtn = findViewById(R.id.main_about_us_button);
 
         userName = findViewById(R.id.main_user_name);
         userBalance = findViewById(R.id.main_user_balance);
@@ -201,6 +202,14 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
             public void onClick(View v) {
                 Intent toTopup = new Intent(MainActivity.this, TopupActivity.class);
                 startActivity(toTopup);
+            }
+        });
+
+        aboutUsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toAboutUs = new Intent(MainActivity.this, AboutUsActivity.class);
+                startActivity(toAboutUs);
             }
         });
     }

@@ -89,11 +89,11 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/main_camera_button"
-                        android:background="@drawable/main_rounded_scan_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
-                        android:padding="10dp"
-                        android:layout_marginRight="12.5dp">
+                        android:layout_marginRight="12.5dp"
+                        android:background="@drawable/main_rounded_scan_btn"
+                        android:padding="10dp">
 
                         <ImageView
                             android:id="@+id/main_scan_image"
@@ -117,7 +117,6 @@
                             app:layout_constraintHorizontal_bias="0.502"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/main_scan_image" />
-
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -152,6 +151,50 @@
                             app:layout_constraintHorizontal_bias="0.502"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/main_topup_image" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/main_promotion"
+                    android:paddingTop="12.5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="12.5dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/main_about_us_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginRight="23dp"
+                        android:background="@drawable/main_rounded_items"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/main_about_us_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/money"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.35" />
+
+                        <TextView
+                            android:layout_width="125dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="About Us"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.502"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/main_about_us_image" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
