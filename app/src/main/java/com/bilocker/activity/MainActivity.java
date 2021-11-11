@@ -382,7 +382,9 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
                 public void onResponse(String response) {
 
                     if(response.equals("Empty")){
-
+                        Intent toCheckIn = new Intent(MainActivity.this, CheckInActivity.class);
+                        toCheckIn.putExtra("LOCKERID",result);
+                        startActivity(toCheckIn);
                     }else {
                         Toast.makeText(getApplication(), response, Toast.LENGTH_SHORT).show();
                     }

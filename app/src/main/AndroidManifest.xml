@@ -16,6 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BiLocker">
         <activity
+            android:name=".activity.CheckInActivity"
+            android:exported="false"
+            android:noHistory="true"/>
+        <activity
             android:name=".activity.AboutUsActivity"
             android:exported="true" />
         <activity
@@ -23,11 +27,12 @@
             android:exported="false" />
         <activity
             android:name=".activity.RegisterPage"
-            android:noHistory="true"></activity>
+            android:noHistory="true" />
         <activity
             android:name=".activity.TransactionDetailPage"
-            android:noHistory="true"></activity>
-        <activity android:name=".activity.LoginPage"></activity>
+            android:noHistory="true" />
+        <activity android:name=".activity.LoginPage"
+            android:noHistory="true"/>
         <activity
             android:name=".activity.WelcomeScreen"
             android:noHistory="true">
@@ -37,7 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
 
         <meta-data
             android:name="com.google.android.geo.AIzaSyAplsuBuiercaPgXY3T8ye8DZGfk1QEEVg"

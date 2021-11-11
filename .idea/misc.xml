@@ -4,17 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/drawable/main_rounded_scan_btn.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_check_in.xml" value="0.14221014492753623" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_login_page.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_topup.xml" value="0.15942028985507245" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_transaction_detail_page.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_welcome_screen.xml" value="0.178125" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/item_type_items.xml" value="0.14221014492753623" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/loading_dialog.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/main_progress_transaction.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/promo_banner.xml" value="0.1539855072463768" />
-        <entry key="..\:/Users/mtirt/Documents/Coding/00-android-studio-projects/05 BiLocker-project-entre/app/src/main/res/drawable/main_rounded_items.xml" value="0.38125" />
-        <entry key="..\:/Users/mtirt/Documents/Coding/00-android-studio-projects/05 BiLocker-project-entre/app/src/main/res/layout/activity_about_us.xml" value="0.25" />
-        <entry key="..\:/Users/mtirt/Documents/Coding/00-android-studio-projects/05 BiLocker-project-entre/app/src/main/res/layout/activity_main.xml" value="0.5" />
       </map>
     </option>
   </component>
