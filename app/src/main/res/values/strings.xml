@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">BiLocker</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <string name="google_maps_key">AIzaSyAplsuBuiercaPgXY3T8ye8DZGfk1QEEVg</string>
-    <string name="map_id">7f38d1150682c649</string>
 </resources>
