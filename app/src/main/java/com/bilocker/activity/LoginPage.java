@@ -40,6 +40,11 @@ public class LoginPage extends AppCompatActivity {
         passwordTxt = findViewById(R.id.login_password);
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         SharedPreferences preferences = getSharedPreferences("BiLocker",MODE_PRIVATE);
         String login = preferences.getString("user","false");
