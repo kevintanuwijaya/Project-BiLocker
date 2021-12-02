@@ -1,5 +1,8 @@
 package com.bilocker.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 public class User {
 
     private String email;

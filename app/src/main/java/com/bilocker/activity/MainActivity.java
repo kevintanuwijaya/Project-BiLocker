@@ -5,7 +5,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -42,10 +41,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.SimpleFormatter;
 
 public class MainActivity extends AppCompatActivity implements OnProgessTransactionAdapter.OnNoteListener {
 
@@ -55,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
     private ImageView logout;
     private LinearLayout historyPanel;
     private ConstraintLayout noTransactionPanel, scanBtn, topupBtn, aboutUsBtn;
-    private User currentUser;
     private RequestQueue requestQueue;
+    private User currentUser;
 
     private static final String historyUrl = "https://bilocker.000webhostapp.com/BiLocker/History.php";
     private static final String currentTransaction = "https://bilocker.000webhostapp.com/BiLocker/CurrentTransaction.php";
@@ -109,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
                 String[] data = response.split("#");
 
                 currentUser = new User();
+
                 currentUser.setEmail(data[0]);
                 currentUser.setPassword(data[1]);
                 currentUser.setName(data[2]);
@@ -141,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
 
                 getTransactionData();
                 getHistoryData();
+
                 userName.setText(currentUser.getName());
                 userBalance.setText("Rp. " + currentUser.getMoney());
                 userSectionName.setText(currentUser.getName());
@@ -364,7 +369,8 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
     @Override
     public void onNoteClick(int position) {
         Intent toDetail = new Intent(MainActivity.this, TransactionDetailPage.class);
-        toDetail.putExtra("TransactionDetail",onProgressTransaction.get(position).getTransactionID());
+        toDetail.putExtra("TransactionDetail",""+onProgressTransaction.get(position).getTransactionID());
+        toDetail.putExtra("MONEY",currentUser.getMoney());
         startActivity(toDetail);
     }
 

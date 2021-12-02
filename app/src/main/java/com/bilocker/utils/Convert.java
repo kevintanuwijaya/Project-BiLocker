@@ -2,6 +2,9 @@ package com.bilocker.utils;
 
 
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -37,5 +40,18 @@ public class Convert {
         }
 
         return null;
+    }
+
+    public String convertIntToRupiah(int money){
+
+        DecimalFormat kursIndonesia = (DecimalFormat) DecimalFormat.getCurrencyInstance();
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+
+        symbols.setCurrencySymbol("Rp. ");
+        symbols.setMonetaryDecimalSeparator(',');
+        symbols.setGroupingSeparator('.');
+
+        kursIndonesia.setDecimalFormatSymbols(symbols);
+        return kursIndonesia.format(money);
     }
 }

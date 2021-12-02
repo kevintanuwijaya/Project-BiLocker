@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.bilocker.R;
 import com.bilocker.model.Location;
 import com.bilocker.model.Transaction;
+import com.bilocker.model.User;
 import com.bilocker.utils.Convert;
 
 import org.json.JSONArray;
@@ -39,6 +41,7 @@ public class TransactionDetailPage extends AppCompatActivity {
     private TextView loker,address,duration, price;
     private RequestQueue requestQueue;
     private Button checkoutBtn;
+    private String lockerID;
 
     private static final String selectedTransaction = "https://bilocker.000webhostapp.com/BiLocker/TransactionDetail.php";
 
@@ -63,6 +66,8 @@ public class TransactionDetailPage extends AppCompatActivity {
 
                     for (int i=0 ; i<transactions.length(); i++) {
                         JSONObject object = transactions.getJSONObject(i);
+
+                        lockerID = object.getString("LockerID");
 
                         Transaction transaction = new Transaction();
 
@@ -103,7 +108,7 @@ public class TransactionDetailPage extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
-                params.put("TransactionID",""+getIntent().getIntExtra("TransactionDetail",0));
+                params.put("TransactionID",getIntent().getStringExtra("TransactionDetail"));
                 return params;
             }
         };
@@ -137,7 +142,7 @@ public class TransactionDetailPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(TransactionDetailPage.this, QrCodeActivity.class);
-                startActivityForResult(i,101);
+                startActivityForResult(i,102);
             }
         });
     }
@@ -145,9 +150,18 @@ public class TransactionDetailPage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if(requestCode == 101){
+            if(requestCode == 102){
                 String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
-                Toast.makeText(getApplication(),result,Toast.LENGTH_SHORT).show();
+
+                if(result.equals(lockerID)){
+                    Intent toPayment = new Intent(TransactionDetailPage.this,CheckOutActivity.class);
+                    int money = getIntent().getIntExtra("MONEY",0);
+                    toPayment.putExtra("MONEY", money);
+                    startActivity(toPayment);
+                }else{
+                    Toast.makeText(getApplicationContext(),"Invalid Locker",Toast.LENGTH_SHORT).show();
+                }
+
             }
             super.onActivityResult(requestCode, resultCode, data);
     }
