@@ -4,49 +4,36 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.bilocker.R;
 import com.bilocker.model.ItemCategory;
 
 import java.util.Vector;
 
-public class ItemCategoryAdapter extends BaseAdapter {
+public class ItemCategoryAdapter extends ArrayAdapter<ItemCategory> {
 
-    private Context context;
-    private Vector<ItemCategory> categories;
+    private int resource;
     private LayoutInflater inflater;
 
-    public ItemCategoryAdapter(Context context, Vector<ItemCategory> categories) {
-        this.context = context;
-        this.categories = categories;
+    public ItemCategoryAdapter( Context context, int resource, Vector<ItemCategory> objects) {
+        super(context, resource, objects);
+        this.resource = resource;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
-    public int getCount() {
-        return categories.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.item_type_items,null);
+        convertView = inflater.inflate(resource,null);
         TextView itemName = convertView.findViewById(R.id.item_category_name);
         ImageView itemImage = convertView.findViewById(R.id.item_category_image);
-        itemImage.setImageResource(categories.get(position).getImage());
-        itemName.setText(categories.get(position).getName());
+        itemImage.setImageResource(getItem(position).getImage());
+        itemName.setText(getItem(position).getName());
         return convertView;
     }
 }

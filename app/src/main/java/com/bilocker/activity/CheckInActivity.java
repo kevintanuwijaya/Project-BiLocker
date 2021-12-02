@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -36,10 +38,11 @@ import java.util.Vector;
 
 public class CheckInActivity extends AppCompatActivity {
 
-    private Spinner categorySpinner;
+    private AutoCompleteTextView categoryTextView;
     private Vector<ItemCategory> categories;
     private ImageView backBtn;
     private Button confirmButton;
+    private String lockerID;
 
     private static final String getCategoriesURL = "https://bilocker.000webhostapp.com/BiLocker/GetItemCategories.php";
 
@@ -52,11 +55,11 @@ public class CheckInActivity extends AppCompatActivity {
 
         categories = new Vector<ItemCategory>();
 
-        categorySpinner = findViewById(R.id.checkin_spinner);
+        categoryTextView = findViewById(R.id.category_autocompleteTextView);
         requestQueue = Volley.newRequestQueue(CheckInActivity.this);
         backBtn = findViewById(R.id.checkin_back_btn);
         confirmButton = findViewById(R.id.checkin_confirm_btn);
-
+        lockerID = getIntent().getStringExtra("LOCKERID");
     }
 
     @Override
@@ -80,7 +83,9 @@ public class CheckInActivity extends AppCompatActivity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent toConfirm = new Intent(CheckInActivity.this, CheckInConfirmActivity.class);
+                toConfirm.putExtra("LOCKERID",lockerID);
+                startActivity(toConfirm);
             }
         });
 
@@ -117,8 +122,8 @@ public class CheckInActivity extends AppCompatActivity {
                         }
 
 
-                        ItemCategoryAdapter adapter = new ItemCategoryAdapter(getApplicationContext(),categories);
-                        categorySpinner.setAdapter(adapter);
+                        ItemCategoryAdapter adapter = new ItemCategoryAdapter(getApplicationContext(),R.layout.item_type_items,categories);
+                        categoryTextView.setAdapter(adapter);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -135,4 +140,6 @@ public class CheckInActivity extends AppCompatActivity {
         requestQueue.add(checkLockerRequest);
 
     }
+
+
 }

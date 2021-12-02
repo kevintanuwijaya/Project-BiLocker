@@ -16,9 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BiLocker">
         <activity
+            android:name=".activity.CheckInConfirmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CheckOutActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CheckInActivity"
             android:exported="false"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".activity.AboutUsActivity"
             android:exported="true" />
@@ -28,11 +34,10 @@
         <activity
             android:name=".activity.RegisterPage"
             android:noHistory="true" />
+        <activity android:name=".activity.TransactionDetailPage" />
         <activity
-            android:name=".activity.TransactionDetailPage"
+            android:name=".activity.LoginPage"
             android:noHistory="true" />
-        <activity android:name=".activity.LoginPage"
-            android:noHistory="true"/>
         <activity
             android:name=".activity.WelcomeScreen"
             android:noHistory="true">
@@ -43,7 +48,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-
     </application>
 
 </manifest>

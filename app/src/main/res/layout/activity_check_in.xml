@@ -28,11 +28,24 @@
             android:textSize="10pt"
             android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/checkin_spinner"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white" />
+            android:layout_height="wrap_content"
+            android:hint="Item Type"
+            android:textColorHint="@color/white"
+            app:boxBackgroundColor="@color/black_80_component">
+
+            <AutoCompleteTextView
+                android:id="@+id/category_autocompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:textColor="@color/white" />
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     </LinearLayout>

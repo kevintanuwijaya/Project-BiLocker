@@ -1,5 +1,7 @@
 package com.bilocker.model;
 
+import androidx.annotation.NonNull;
+
 public class ItemCategory {
 
     private int image;
@@ -15,6 +17,11 @@ public class ItemCategory {
     }
 
     public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
         return name;
     }
 }

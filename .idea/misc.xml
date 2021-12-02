@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/drawable/biwallet_button_checked.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/drawable/biwallet_button_selector.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/drawable/biwallet_button_unchecked.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/drawable/main_rounded_scan_btn.xml" value="0.3880208333333333" />
-        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_check_in.xml" value="0.14221014492753623" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_check_in.xml" value="0.67" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_check_in_confirm.xml" value="0.18085106382978725" />
+        <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_check_out.xml" value="0.25" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_login_page.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_main.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Asus/Documents/BINUS/OneDrive - Bina Nusantara University/Semester 5/BiLocker/app/src/main/res/layout/activity_topup.xml" value="0.15942028985507245" />
