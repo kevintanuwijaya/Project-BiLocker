@@ -48,7 +48,6 @@ public class CheckInConfirmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_check_in_confirm);
 
         loading = new LoadingDialog(this);
-        loading.startDialog();
         check = findViewById(R.id.check_in_confirm_check);
         closeBtn = findViewById(R.id.check_in_confirm_button);
 
@@ -70,6 +69,7 @@ public class CheckInConfirmActivity extends AppCompatActivity {
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loading.startDialog();
                 storeTransaction();
             }
         });
@@ -80,8 +80,6 @@ public class CheckInConfirmActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equals("Locker is Open")){
-                    loading.dismissDialog();
-
                     Animation animation = AnimationUtils.loadAnimation(getApplication(),R.anim.check_image_animation);
                     check.setAnimation(animation);
                     check.setVisibility(View.VISIBLE);
@@ -90,7 +88,6 @@ public class CheckInConfirmActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             closeBtn.setVisibility(View.VISIBLE);
-
                         }
                     },2000);
                 }
@@ -118,6 +115,7 @@ public class CheckInConfirmActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 if(response.equals("Create Transaction Success")){
+                    loading.dismissDialog();
                     Toast.makeText(getApplication(),response,Toast.LENGTH_SHORT).show();
                     Intent toMain = new Intent(CheckInConfirmActivity.this, MainActivity.class);
                     toMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

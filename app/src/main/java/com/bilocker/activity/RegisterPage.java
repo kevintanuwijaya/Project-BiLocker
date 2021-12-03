@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bilocker.R;
+import com.bilocker.utils.LoadingDialog;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class RegisterPage extends AppCompatActivity {
     private Button registerBtn;
     private EditText usernameTxt,emailTxt,passwordTxt;
     private Intent toLogin;
+    private LoadingDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class RegisterPage extends AppCompatActivity {
         usernameTxt = findViewById(R.id.register_username);
         emailTxt = findViewById(R.id.register_email);
         passwordTxt = findViewById(R.id.register_password);
+        loading = new LoadingDialog(this);
 
         toLogin = new Intent(RegisterPage.this,LoginPage.class);
     }
@@ -58,6 +61,7 @@ public class RegisterPage extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loading.startDialog();
                 final String url = "https://bilocker.000webhostapp.com/BiLocker/Register.php";
 
                 final String name = usernameTxt.getText().toString();
@@ -67,8 +71,8 @@ public class RegisterPage extends AppCompatActivity {
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplication(),response.toString(),Toast.LENGTH_SHORT).show();
-
+                        loading.dismissDialog();
+                        Toast.makeText(getApplication(),response,Toast.LENGTH_SHORT).show();
                         if (response.equals("Success")){
                             Toast.makeText(getApplication(),"Register Success",Toast.LENGTH_SHORT).show();
                             startActivity(toLogin);

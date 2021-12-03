@@ -18,6 +18,7 @@
             android:id="@+id/check_in_confirm_check"
             android:src="@drawable/checked"
             android:visibility="gone"
+            android:layout_margin="25dp"
             android:layout_width="150dp"
             android:layout_height="150dp"/>
 

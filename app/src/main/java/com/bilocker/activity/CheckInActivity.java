@@ -27,6 +27,7 @@ import com.bilocker.model.ItemCategory;
 import com.bilocker.model.Location;
 import com.bilocker.model.Transaction;
 import com.bilocker.utils.Convert;
+import com.bilocker.utils.LoadingDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +60,7 @@ public class CheckInActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(CheckInActivity.this);
         backBtn = findViewById(R.id.checkin_back_btn);
         confirmButton = findViewById(R.id.checkin_confirm_btn);
+
         lockerID = getIntent().getStringExtra("LOCKERID");
     }
 

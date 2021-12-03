@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bilocker.R;
+import com.bilocker.utils.LoadingDialog;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +32,7 @@ public class LoginPage extends AppCompatActivity {
     private TextView toRegisterTxt,recoverTxt;
     private Button loginBtn;
     private TextView emailTxt,passwordTxt;
+    private LoadingDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,7 @@ public class LoginPage extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         emailTxt = findViewById(R.id.login_email);
         passwordTxt = findViewById(R.id.login_password);
-
+        loading = new LoadingDialog(this);
 
     }
 
@@ -72,7 +78,7 @@ public class LoginPage extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                loading.startDialog();
                 final String url = "https://bilocker.000webhostapp.com/BiLocker/Login.php";
 
                 final String email = emailTxt.getText().toString();
@@ -88,16 +94,23 @@ public class LoginPage extends AppCompatActivity {
                             passwordTxt.setText("");
                         }else{
                             Toast.makeText(getApplication(),"Login Success",Toast.LENGTH_SHORT).show();
+                            try {
+                                JSONObject object = new JSONObject(response);
 
-                            String[] data = response.split("#");
+                                SharedPreferences preferences = getSharedPreferences("BiLocker",MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("user",object.getString("UserEmail"));
+                                editor.apply();
 
-                            SharedPreferences preferences = getSharedPreferences("BiLocker",MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("user",data[0]);
-                            editor.apply();
+                                loading.dismissDialog();
+                                Intent toHome = new Intent(LoginPage.this, MainActivity.class);
+                                startActivity(toHome);
 
-                            Intent toHome = new Intent(LoginPage.this, MainActivity.class);
-                            startActivity(toHome);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
                         }
                     }
                 }, new Response.ErrorListener() {

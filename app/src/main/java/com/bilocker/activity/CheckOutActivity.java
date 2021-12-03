@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.bilocker.R;
 import com.bilocker.model.User;
 import com.bilocker.utils.Convert;
+import com.bilocker.utils.LoadingDialog;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -37,6 +38,7 @@ public class CheckOutActivity extends AppCompatActivity {
     private int money,topay,transactionID;
     private String lockerID,userEmail;
     private RequestQueue requestQueue;
+    private LoadingDialog loading;
 
     private final static String payTransactionURL = "https://bilocker.000webhostapp.com/BiLocker/PayTransaction.php";
 
@@ -50,6 +52,7 @@ public class CheckOutActivity extends AppCompatActivity {
         payBtn = findViewById(R.id.checkout_pay_btn);
         backBtn = findViewById(R.id.checkout_back_btn);
         requestQueue = Volley.newRequestQueue(this);
+        loading = new LoadingDialog(this);
 
         money = getIntent().getIntExtra("MONEY",0);
         topay = getIntent().getIntExtra("MONEYTOPAY",0);
@@ -83,11 +86,13 @@ public class CheckOutActivity extends AppCompatActivity {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loading.startDialog();
                 int selectedID = paymentRadio.getCheckedRadioButtonId();
                 if(selectedID == R.id.checkout_bimoney_button ){
                     if(money > topay){
                         payTransaction();
                     }else{
+                        loading.dismissDialog();
                         Toast.makeText(getApplicationContext(), "Insufficient Money, Please Top Up", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -99,9 +104,11 @@ public class CheckOutActivity extends AppCompatActivity {
         StringRequest storeTransactionRequest = new StringRequest(Request.Method.POST, payTransactionURL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("payStatus",response);
                 if(response.equals("Continue")){
                     Intent toConfirm = new Intent(CheckOutActivity.this, CheckOutConfirmActivity.class);
-                    toConfirm.putExtra("LockerID",lockerID);
+                    toConfirm.putExtra("LOCKERID",lockerID);
+                    loading.dismissDialog();
                     startActivity(toConfirm);
                 }
             }

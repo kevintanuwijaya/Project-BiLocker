@@ -44,9 +44,7 @@ public class CheckOutConfirmActivity extends AppCompatActivity {
         check = findViewById(R.id.check_out_confirm_check);
         closeBtn = findViewById(R.id.check_out_confirm_button);
 
-        lockerID = getIntent().getStringExtra("lockerID");
-        loading = new LoadingDialog(this);
-        loading.startDialog();
+        lockerID = getIntent().getStringExtra("LOCKERID");
     }
 
     @Override
@@ -55,10 +53,12 @@ public class CheckOutConfirmActivity extends AppCompatActivity {
 
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.check_image_animation);
         check.setAnimation(animation);
+        check.setVisibility(View.VISIBLE);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                closeBtn.setVisibility(View.VISIBLE);
                 closeBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

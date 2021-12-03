@@ -22,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bilocker.R;
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
     protected void onStart() {
         super.onStart();
 
+        noTransactionPanel.setVisibility(View.VISIBLE);
         SharedPreferences preferences = getSharedPreferences("BiLocker",MODE_PRIVATE);
         String login = preferences.getString("user","false");
 
@@ -108,15 +110,21 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
         StringRequest currentUserRequest = new StringRequest(Request.Method.POST, CurrUser, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
 
-                String[] data = response.split("#");
+                    currentUser = new User();
 
-                currentUser = new User();
+                    currentUser.setEmail(object.getString("UserEmail"));
+                    currentUser.setPassword(object.getString("UserPassword"));
+                    currentUser.setName(object.getString("UserName"));
+                    currentUser.setMoney(object.getInt("UserBalance"));
 
-                currentUser.setEmail(data[0]);
-                currentUser.setPassword(data[1]);
-                currentUser.setName(data[2]);
-                currentUser.setMoney(Integer.parseInt(data[3]));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -147,14 +155,14 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
                 getHistoryData();
 
                 userName.setText(currentUser.getName());
-                userBalance.setText("Rp. " + currentUser.getMoney());
+                userBalance.setText(Convert.getInstance().convertIntToRupiah(currentUser.getMoney()));
                 userSectionName.setText(currentUser.getName());
                 userSectionEmail.setText(currentUser.getEmail());
-                userSectionBalance.setText("Rp. " + currentUser.getMoney());
+                userSectionBalance.setText(Convert.getInstance().convertIntToRupiah(currentUser.getMoney()));
 
                 loadingDialog.dismissDialog();
             }
-        },3000);
+        },4000);
 
 
     }
@@ -237,7 +245,6 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
                         JSONArray transactions = jsonObject.getJSONArray("Transaction");
 
                         for (int i=0 ; i<transactions.length(); i++){
-                            noTransactionPanel.setVisibility(View.GONE);
                             JSONObject object = transactions.getJSONObject(i);
 
                             Transaction transaction = new Transaction();
@@ -291,15 +298,14 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
     }
 
     private void getTransactionData(){
+
         StringRequest currentTransactionRequest = new StringRequest(Request.Method.POST, currentTransaction, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if (response!=null){
+                if (!response.equals("No Transaction")){
                     try {
                         JSONObject jsonObject = new JSONObject(response);
-
                         JSONArray transactions = jsonObject.getJSONArray("Transaction");
-
                         for (int i=0 ; i<transactions.length(); i++){
                             JSONObject object = transactions.getJSONObject(i);
 
@@ -324,6 +330,7 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
                             onProgressTransaction.add(transaction);
                         }
 
+                        noTransactionPanel.setVisibility(View.GONE);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplication());
                         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
@@ -339,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements OnProgessTransact
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                error.printStackTrace();
             }
         }){
 
