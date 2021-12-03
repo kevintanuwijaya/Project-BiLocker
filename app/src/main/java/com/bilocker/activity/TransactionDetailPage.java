@@ -42,8 +42,9 @@ public class TransactionDetailPage extends AppCompatActivity {
     private RequestQueue requestQueue;
     private Button checkoutBtn;
     private String lockerID;
+    private Transaction selectedTransaction;
 
-    private static final String selectedTransaction = "https://bilocker.000webhostapp.com/BiLocker/TransactionDetail.php";
+    private static final String selectedTransactionURL = "https://bilocker.000webhostapp.com/BiLocker/TransactionDetail.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class TransactionDetailPage extends AppCompatActivity {
         price = findViewById(R.id.detail_price_text);
         checkoutBtn = findViewById(R.id.detail_checkout);
 
-        StringRequest getTransaction = new StringRequest(Request.Method.POST, selectedTransaction, new Response.Listener<String>() {
+        StringRequest getTransaction = new StringRequest(Request.Method.POST, selectedTransactionURL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -87,11 +88,12 @@ public class TransactionDetailPage extends AppCompatActivity {
                             transaction.setPrice(Integer.parseInt(object.getString("TransactionPrice")));
                         }
 
+                        selectedTransaction = transaction;
+
                         loker.setText(transaction.getLocation().getLocker());
                         address.setText(transaction.getLocation().getAddress());
                         duration.setText(getHoursDuration(transaction) + " Hours");
                         price.setText(getEstPrice(transaction) + " IDR");
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -150,13 +152,16 @@ public class TransactionDetailPage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-            if(requestCode == 102){
+            if(requestCode == 102 && resultCode == RESULT_OK && data != null){
                 String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
 
                 if(result.equals(lockerID)){
                     Intent toPayment = new Intent(TransactionDetailPage.this,CheckOutActivity.class);
                     int money = getIntent().getIntExtra("MONEY",0);
                     toPayment.putExtra("MONEY", money);
+                    toPayment.putExtra("MONEYTOPAY",getEstPrice(selectedTransaction));
+                    toPayment.putExtra("LOCKERID",lockerID);
+                    toPayment.putExtra("TRANSACTIONID",selectedTransaction.getTransactionID());
                     startActivity(toPayment);
                 }else{
                     Toast.makeText(getApplicationContext(),"Invalid Locker",Toast.LENGTH_SHORT).show();

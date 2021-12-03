@@ -4,7 +4,6 @@ package com.bilocker.utils;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -40,6 +39,11 @@ public class Convert {
         }
 
         return null;
+    }
+
+    public String convertDateToString(Date date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return format.format(date);
     }
 
     public String convertIntToRupiah(int money){

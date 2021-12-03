@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bilocker.R;
+import com.bilocker.utils.Convert;
 import com.bilocker.utils.LoadingDialog;
 
 import java.text.SimpleDateFormat;
@@ -36,7 +37,6 @@ public class CheckInConfirmActivity extends AppCompatActivity {
     private ImageView check;
     private Button closeBtn;
     private String userEmail;
-    private SimpleDateFormat format;
 
     private static final String openLockerURL = "https://bilocker.000webhostapp.com/BiLocker/OpenLocker.php";
     private static final String storeTransaction = "https://bilocker.000webhostapp.com/BiLocker/StoreTransaction.php";
@@ -56,7 +56,6 @@ public class CheckInConfirmActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         SharedPreferences preferences = getSharedPreferences("BiLocker",MODE_PRIVATE);
         userEmail = preferences.getString("user","false");
-        format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
 
     @Override
@@ -137,7 +136,7 @@ public class CheckInConfirmActivity extends AppCompatActivity {
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("email",userEmail);
                 params.put("lockerID",lockerID);
-                params.put("startTime",format.format(new Date()));
+                params.put("startTime", Convert.getInstance().convertDateToString(new Date()));
                 return params;
             }
         };
