@@ -105,10 +105,10 @@ public class CheckOutActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d("payStatus",response);
+                loading.dismissDialog();
                 if(response.equals("Continue")){
                     Intent toConfirm = new Intent(CheckOutActivity.this, CheckOutConfirmActivity.class);
                     toConfirm.putExtra("LOCKERID",lockerID);
-                    loading.dismissDialog();
                     startActivity(toConfirm);
                 }
             }
