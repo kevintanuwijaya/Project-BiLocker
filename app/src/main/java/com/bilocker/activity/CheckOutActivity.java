@@ -86,16 +86,21 @@ public class CheckOutActivity extends AppCompatActivity {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loading.startDialog();
                 int selectedID = paymentRadio.getCheckedRadioButtonId();
-                if(selectedID == R.id.checkout_bimoney_button ) {
-                    if (money > topay) {
-                        loading.startDialog();
-                        payTransaction();
-                    } else {
-                        loading.dismissDialog();
-                        Toast.makeText(getApplicationContext(), "Insufficient Money, Please Top Up", Toast.LENGTH_SHORT).show();
+                if (selectedID == -1){
+                    Toast.makeText(getApplicationContext(), "Please Choose A Payment Method", Toast.LENGTH_SHORT).show();
+                    loading.dismissDialog();
+                    return;
+                }else
+                    if(selectedID == R.id.checkout_bimoney_button ) {
+                        if (money > topay) {
+                            payTransaction();
+                        } else {
+                            loading.dismissDialog();
+                            Toast.makeText(getApplicationContext(), "Insufficient Money, Please Top Up", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
             }
         });
     }
