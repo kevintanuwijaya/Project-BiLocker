@@ -87,7 +87,7 @@ public class LoginPage extends AppCompatActivity {
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        loading.dismissDialog();
                         if(response.equals("Failed")){
                             Toast.makeText(getApplication(),"Invalid Email or Password",Toast.LENGTH_SHORT).show();
                             emailTxt.setText("");
@@ -102,7 +102,7 @@ public class LoginPage extends AppCompatActivity {
                                 editor.putString("user",object.getString("UserEmail"));
                                 editor.apply();
 
-                                loading.dismissDialog();
+
                                 Intent toHome = new Intent(LoginPage.this, MainActivity.class);
                                 startActivity(toHome);
 
